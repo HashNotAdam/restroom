@@ -31,7 +31,7 @@ module Scifi
       exposes :authors do
         exposes :influences, model: Author, response_filter: proc { |_, data| data['influences'] }
         exposes :titles, model: Book, resource: :books, id: :key do
-          response_filter proc { |_, data| data['data'] }
+          response_filter(proc { |_, data| data['data'] })
         end
       end
     end.dump
