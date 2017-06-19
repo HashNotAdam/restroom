@@ -1,13 +1,8 @@
-Rails:
-  Enabled: true
 AllCops:
   TargetRubyVersion: 2.4
   Exclude:
-    - Guardfile
     - Rakefile
     - bin/**/*
-    - db/schema.rb
-    - lib/devise/strategies/database_authenticatable.rb
 Style/Documentation:
   Enabled: false
 Style/NumericLiterals:
@@ -74,18 +69,4 @@ Lint/FormatParameterMismatch:
   Enabled: false
 Lint/UselessAssignment:
   Exclude:
-    - 'test/**/*'
-Rails/HasAndBelongsToMany:
-  Enabled: false
-Rails/NotNullColumn:
-  Enabled: false
-Rails/SafeNavigation:
-  Enabled: false
-Rails/HttpPositionalArguments:
-  Enabled: false
-Rails/SkipsModelValidations:
-  Enabled: false
-Rails/ReversibleMigration:
-  Enabled: false
-Rails/ApplicationRecord:
-  Enabled: false
+    - 'spec/**/*'
