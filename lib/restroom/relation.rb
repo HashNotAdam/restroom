@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Restroom
   module Relation
     def self.included(base)

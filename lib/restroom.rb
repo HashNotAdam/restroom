@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "restroom/version"
 require 'restroom/proxy'
 require 'restroom/relation'

@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'restroom/relation'
 
 module Restroom
   class Context
 
-    STRUCTURE  = %i[children host parent key]
-    ATTRIBUTES = %i[resource model id response_filter]
-    INHERITABLE = %i[response_filter]
+    STRUCTURE  = %i[children host parent key].freeze
+    ATTRIBUTES = %i[resource model id response_filter].freeze
+    INHERITABLE = %i[response_filter].freeze
 
     attr_reader   *STRUCTURE
     attr_accessor *ATTRIBUTES
