@@ -12,7 +12,7 @@ class Authlet < Faraday::Middleware
   end
 
   def call(env)
-    env[:request_headers]['AUTH_HEADER']= 'token'
+    env[:request_headers]['AUTH_HEADER'] = 'token'
     @app.call env
   end
 end
@@ -55,43 +55,43 @@ describe Restroom do
 
   before do
     stub_request(:get, 'https://scifi.org/api/authors').
-      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+      with(:headers => {'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Faraday v0.9.2'}).
       to_return(:status => 200, :body => JSON.dump(author_data), :headers => {})
 
     stub_request(:get, 'https://scifi.org/api/authors/hard-scifi').
-      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+      with(:headers => {'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Faraday v0.9.2'}).
       to_return(:status => 200, :body => JSON.dump([author_data[0]]), :headers => {})
 
     stub_request(:get, 'https://scifi.org/api/authors?awesome=true').
-      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+      with(:headers => {'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Faraday v0.9.2'}).
       to_return(:status => 200, :body => JSON.dump(author_data[0..1]), :headers => {})
 
     stub_request(:get, 'https://scifi.org/api/authors/2').
-      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+      with(:headers => {'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Faraday v0.9.2'}).
       to_return(:status => 200, :body => JSON.dump(author_data[1]), :headers => {})
 
     stub_request(:get, 'https://scifi.org/api/authors/2/books').
-      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+      with(:headers => {'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Faraday v0.9.2'}).
       to_return(:status => 200, :body => JSON.dump(data: gibson_book_data), :headers => {})
 
     stub_request(:get, 'https://scifi.org/api/authors/2/influences').
-      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+      with(:headers => {'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Faraday v0.9.2'}).
       to_return(:status => 200, :body => JSON.dump(influences: [author_data[3]]), :headers => {})
 
     stub_request(:get, 'https://scifi.org/api/authors/2/books/mona-list-overdrive').
-      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+      with(:headers => {'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Faraday v0.9.2'}).
       to_return(:status => 200, :body => JSON.dump(data: gibson_book_data.first), :headers => {})
 
     stub_request(:get, 'https://scifi.org/api/authors/3').
-      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+      with(:headers => {'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Faraday v0.9.2'}).
       to_return(:status => 500, :body => '*bzzt*', :headers => {})
 
     stub_request(:get, 'https://scifi.org/api/authors/4').
-      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+      with(:headers => {'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Faraday v0.9.2'}).
       to_timeout
 
     stub_request(:get, 'https://scifi.org/api/authors/5').
-      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.2'}).
+      with(:headers => {'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Faraday v0.9.2'}).
       to_return(:status => 403, :body => 'Who are you?', :headers => {})
   end
 
