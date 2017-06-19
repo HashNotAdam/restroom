@@ -8,7 +8,7 @@ module Restroom
 
     module ClassMethods
       def add_relation(key, dsl)
-        # TODO Check for collision
+        # TODO: Check for collision
         define_method key do
           Proxy.new self, dsl
         end

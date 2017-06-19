@@ -28,7 +28,7 @@ module Restroom
       @key = key
       @resource ||= key
       @model ||= classify_resource(@resource)
-      @host = host || model # TODO guess model from key
+      @host = host || model # TODO: guess model from key
       @parent = parent
 
       @model.send(:attr_accessor, :restroom_parent) if @model
