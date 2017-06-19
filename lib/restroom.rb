@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "restroom/version"
+require 'restroom/version'
 require 'restroom/proxy'
 require 'restroom/relation'
 require 'restroom/context'
