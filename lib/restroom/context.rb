@@ -44,7 +44,7 @@ module Restroom
     end
 
     def exposes(key, **args, &block)
-      @children << child = self.class.new(key: key, parent: self, **args, &block)
+      @children << self.class.new(key: key, parent: self, **args, &block)
     end
 
     def dump
