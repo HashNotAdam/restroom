@@ -52,7 +52,8 @@ module Restroom
     end
 
     def dumper(context, depth)
-      puts "#{'  ' * depth}#{context} - host: #{context.host}, parent: #{context.parent}, class: #{context.model}, id: #{context.id}"#, filter: #{context.response_filter}"
+      puts "#{'  ' * depth}#{context} - host: #{context.host}, " \
+        "parent: #{context.parent}, class: #{context.model}, id: #{context.id}"
       context.children.each do |child|
         dumper(child, depth + 1)
       end
