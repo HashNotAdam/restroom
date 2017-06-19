@@ -110,7 +110,7 @@ describe Restroom do
       end
 
       it 'is returning objects with the right ids' do
-        expect(subject.authors.all.collect(&:id)) =~ author_data.collect{ |a| a[:id] }
+        expect(subject.authors.all.collect(&:id)) =~ author_data.collect { |a| a[:id] }
       end
     end
 
@@ -132,7 +132,7 @@ describe Restroom do
 
   it "collects author's books" do
     expect(subject.authors.get(2).titles.all).to all(be_a(Book))
-    expect(subject.authors.get(2).titles.all.collect(&:title)) =~ gibson_book_data.collect{ |a| a[:title] }
+    expect(subject.authors.get(2).titles.all.collect(&:title)) =~ gibson_book_data.collect { |a| a[:title] }
   end
 
   it 'collects a book' do
