@@ -53,7 +53,7 @@ module Restroom
       parent.connection
     end
 
-    def build(data={})
+    def build(data = {})
       model.new(data).tap do |obj|
         obj.restroom_parent = self
       end
@@ -85,7 +85,7 @@ module Restroom
       raise ApiError, "couldn't parse response: #{body[0..20]}"
     end
 
-    def filter_result(path, mode, params={})
+    def filter_result(path, mode, params = {})
       response_filter.call(mode, parsed_response(request(:get, path, params)))
     end
 
@@ -93,15 +93,15 @@ module Restroom
       build filter_result(singular_path(key), :singular)
     end
 
-    def filter(filter, params={})
+    def filter(filter, params = {})
       filter_result(expand_path(resource_path, filter), :plural, params).map { |data| build data }
     end
 
-    def all(params={})
+    def all(params = {})
       filter_result(plural_path, :plural, params).map { |data| build data }
     end
 
-    def request(method, path, args={})
+    def request(method, path, args = {})
       response = connection.send(method, path, args)
       if (200...300).cover? response.status
         return response.body

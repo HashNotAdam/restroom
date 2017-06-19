@@ -12,7 +12,7 @@ module Restroom
     attr_accessor(*ATTRIBUTES)
 
     INHERITABLE.each do |attr|
-      define_method attr do |value=nil|
+      define_method attr do |value = nil|
         return instance_variable_set("@#{attr}", value) if value
         instance_variable_get("@#{attr}") || @parent.send(attr)
       end
@@ -54,7 +54,7 @@ module Restroom
     def dumper(context, depth)
       puts "#{'  ' * depth}#{context} - host: #{context.host}, parent: #{context.parent}, class: #{context.model}, id: #{context.id}"#, filter: #{context.response_filter}"
       context.children.each do |child|
-        dumper(child, depth+1)
+        dumper(child, depth + 1)
       end
     end
   end
