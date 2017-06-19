@@ -12,7 +12,7 @@ module Restroom
       @dsl = dsl
     end
 
-    def iterate filter_by: nil, **args
+    def iterate(filter_by: nil, **args)
       Enumerator.new do |yielder|
         page = 1
         loop do
@@ -53,7 +53,7 @@ module Restroom
       parent.connection
     end
 
-    def build data={}
+    def build(data={})
       model.new(data).tap do |obj|
         obj.restroom_parent = self
       end
@@ -63,7 +63,7 @@ module Restroom
       instance.send(dsl.parent.id)
     end
 
-    def expand_path *path
+    def expand_path(*path)
       path.compact.join('/')
     end
 
@@ -79,7 +79,7 @@ module Restroom
       resource_path
     end
 
-    def parsed_response body
+    def parsed_response(body)
       JSON.parse body
     rescue JSON::ParseError
       raise ApiError, "couldn't parse response: #{body[0..20]}"
@@ -89,19 +89,19 @@ module Restroom
       response_filter.call(mode, parsed_response(request(:get, path, params)))
     end
 
-    def get key
+    def get(key)
       build filter_result(singular_path(key), :singular)
     end
 
-    def filter filter, params={}
+    def filter(filter, params={})
       filter_result(expand_path(resource_path, filter), :plural, params).map { |data| build data }
     end
 
-    def all params={}
+    def all(params={})
       filter_result(plural_path, :plural, params).map { |data| build data }
     end
 
-    def request method, path, args={}
+    def request(method, path, args={})
       response = connection.send(method, path, args)
       if (200...300).cover? response.status
         return response.body

@@ -4,13 +4,12 @@ require 'restroom/relation'
 
 module Restroom
   class Context
-
     STRUCTURE  = %i[children host parent key].freeze
     ATTRIBUTES = %i[resource model id response_filter].freeze
     INHERITABLE = %i[response_filter].freeze
 
-    attr_reader   *STRUCTURE
-    attr_accessor *ATTRIBUTES
+    attr_reader(*STRUCTURE)
+    attr_accessor(*ATTRIBUTES)
 
 
     INHERITABLE.each do |attr|
@@ -25,7 +24,7 @@ module Restroom
       @id = :id
 
       args.each { |k, v| send "#{k}=", v }
-      instance_eval &block if block_given?
+      instance_eval(&block) if block_given?
 
       @key = key
       @resource ||= key
@@ -45,7 +44,7 @@ module Restroom
       resource.to_s.classify.constantize if resource
     end
 
-    def exposes key, **args, &block
+    def exposes(key, **args, &block)
       @children << child = self.class.new(key: key, parent: self, **args, &block)
     end
 
@@ -53,7 +52,7 @@ module Restroom
       dumper(self, 0)
     end
 
-    def dumper context, depth
+    def dumper(context, depth)
       puts "#{'  ' * depth}#{context} - host: #{context.host}, parent: #{context.parent}, class: #{context.model}, id: #{context.id}"#, filter: #{context.response_filter}"
       context.children.each do |child|
         dumper(child, depth+1)
