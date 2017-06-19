@@ -35,12 +35,10 @@ module Scifi
         end
       end
     end.dump
-
   end
 end
 
 describe Restroom do
-
   author_data = [
     { id: 1, name: 'Charlie Strauss' },
     { id: 2, name: 'William Gibson' },
