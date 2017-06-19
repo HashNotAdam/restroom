@@ -10,7 +10,6 @@ require 'faraday'
 require 'faraday_middleware'
 require 'json'
 
-
 module Restroom
   def self.included(base)
     base.extend(ClassMethods)

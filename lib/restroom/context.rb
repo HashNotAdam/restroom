@@ -11,7 +11,6 @@ module Restroom
     attr_reader(*STRUCTURE)
     attr_accessor(*ATTRIBUTES)
 
-
     INHERITABLE.each do |attr|
       define_method attr do |value=nil|
         return instance_variable_set("@#{attr}", value) if value
