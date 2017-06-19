@@ -29,9 +29,9 @@ module Scifi
 
     restroom 'https://scifi.org', base_path: 'api' do
       exposes :authors do
-        exposes :influences, model: Author, response_filter: proc { |mode, data| data['influences'] }
+        exposes :influences, model: Author, response_filter: proc { |_, data| data['influences'] }
         exposes :titles, model: Book, resource: :books, id: :key do
-          response_filter proc { |mode, data| data['data'] }
+          response_filter proc { |_, data| data['data'] }
         end
       end
     end.dump
