@@ -16,11 +16,12 @@ module Restroom
       Enumerator.new do |yielder|
         page = 1
         loop do
-          if filter_by
-            list = filter(filter_by, **args.merge(page: page))
-          else
-            list = all(**args.merge(page: page))
-          end
+          list =
+            if filter_by
+              filter(filter_by, **args.merge(page: page))
+            else
+              all(**args.merge(page: page))
+            end
           page += 1
           break if list.empty?
           list.each { |c| yielder.yield c }
