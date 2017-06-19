@@ -106,7 +106,7 @@ describe Restroom do
   context 'for authors' do
     context 'the plural path' do
       it 'is returning a list of author objects' do
-        expect(subject.authors.all).to all( be_a(Author) )
+        expect(subject.authors.all).to all(be_a(Author))
       end
 
       it 'is returning objects with the right ids' do
@@ -126,12 +126,12 @@ describe Restroom do
   end
 
   it "collects author's influences" do
-    expect(subject.authors.get(2).influences.all).to all( be_a(Author) )
+    expect(subject.authors.get(2).influences.all).to all(be_a(Author))
     expect(subject.authors.get(2).influences.all.collect(&:name)) =~ ['William S. Burroughs']
   end
 
   it "collects author's books" do
-    expect(subject.authors.get(2).titles.all).to all( be_a(Book) )
+    expect(subject.authors.get(2).titles.all).to all(be_a(Book))
     expect(subject.authors.get(2).titles.all.collect(&:title)) =~ gibson_book_data.collect{ |a| a[:title] }
   end
 
