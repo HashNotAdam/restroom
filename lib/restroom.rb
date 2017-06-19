@@ -45,7 +45,7 @@ module Restroom
     end
 
     def default_response_filter
-      proc { |mode, response| response }
+      proc { |_mode, response| response }
     end
 
     def stack(config); end
