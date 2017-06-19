@@ -102,7 +102,7 @@ module Restroom
 
     def request method, path, args={}
       response = connection.send(method, path, args)
-      if (200...300).include? response.status
+      if (200...300).cover? response.status
         return response.body
       else
         raise AuthenticationError, 'unauthorised' if response.status == 401
