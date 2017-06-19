@@ -1,0 +1,91 @@
+Rails:
+  Enabled: true
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - Guardfile
+    - Rakefile
+    - bin/**/*
+    - db/schema.rb
+    - lib/devise/strategies/database_authenticatable.rb
+Style/Documentation:
+  Enabled: false
+Style/NumericLiterals:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Style/Lambda:
+  Enabled: false
+Style/PredicateName:
+  Enabled: false
+Style/AsciiComments:
+  Enabled: false
+Style/RescueModifier:
+  Enabled: false
+Style/AccessorMethodName:
+  Enabled: false
+Style/ZeroLengthPredicate:
+  Enabled: false
+Style/NumericPredicate:
+  EnforcedStyle: comparison
+Style/VariableNumber:
+  Enabled: false
+Layout/EmptyLineAfterMagicComment:
+  Enabled: false
+Layout/LeadingCommentSpace:
+  Enabled: false
+Layout/IndentArray:
+  EnforcedStyle: consistent
+Layout/IndentationConsistency:
+  Enabled: false
+Layout/SpaceBeforeFirstArg:
+  Enabled: false
+Layout/AlignHash:
+  Enabled: false
+Layout/AlignParameters:
+  Enabled: false
+Layout/MultilineOperationIndentation:
+  Enabled: false
+Layout/ClosingParenthesisIndentation:
+  Enabled: false
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+Metrics/ModuleLength:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/ParameterLists:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Lint/EndAlignment:
+  Enabled: false
+Lint/FormatParameterMismatch:
+  Enabled: false
+Lint/UselessAssignment:
+  Exclude:
+    - 'test/**/*'
+Rails/HasAndBelongsToMany:
+  Enabled: false
+Rails/NotNullColumn:
+  Enabled: false
+Rails/SafeNavigation:
+  Enabled: false
+Rails/HttpPositionalArguments:
+  Enabled: false
+Rails/SkipsModelValidations:
+  Enabled: false
+Rails/ReversibleMigration:
+  Enabled: false
+Rails/ApplicationRecord:
+  Enabled: false
