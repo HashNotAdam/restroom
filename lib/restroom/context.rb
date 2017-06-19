@@ -3,9 +3,9 @@ require 'restroom/relation'
 module Restroom
   class Context
 
-    STRUCTURE  = %I<children host parent key>
-    ATTRIBUTES = %I<resource model id response_filter>
-    INHERITABLE = %I<response_filter>
+    STRUCTURE  = %i[children host parent key]
+    ATTRIBUTES = %i[resource model id response_filter]
+    INHERITABLE = %i[response_filter]
 
     attr_reader   *STRUCTURE
     attr_accessor *ATTRIBUTES
